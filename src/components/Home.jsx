@@ -6,36 +6,36 @@ import resume_img2 from '../assets/undraw_updated_resume_u4fy.svg';
 
 import { makeStyles } from '@material-ui/styles';
 
+const useStyles = makeStyles(() => ({
 
+    mainContainer: {
+        marginTop: '6em'
+    },
+   
+  
+      resumeText: {
+          marginLeft:'5em'
+      },
+      resumeRIght:{
+          marginRight:'0em',
+          width:'100%'
+          
+      },
+      imgContainer:{
+          marginRight:'10em'
+      }
+      , imgC:{
+          width:'100%'
+      }
+
+
+}))
 
 
 
 function Home() {
 
-    const useStyles = makeStyles(() => ({
-
-        mainContainer: {
-            marginTop: '6em'
-        },
-       
-      
-          resumeText: {
-              marginLeft:'5em'
-          },
-          resumeRIght:{
-              marginRight:'0em',
-              width:'100%'
-              
-          },
-          imgContainer:{
-              marginRight:'10em'
-          }
-          , imgC:{
-              width:'100%'
-          }
-
-
-    }))
+   
 
 
     const classes = useStyles();
@@ -61,7 +61,7 @@ Hi, Get your resume done in minutes only.
 
           <Grid container item lg={7} justify="flex-end">
          <Grid container className={classes.imgContainer}>
-             <Grid item style={{height:'50em'}} className={classes.imgC}>
+             <Grid item >
 
 <img src={resume_img1} alt=""/>
              </Grid>
