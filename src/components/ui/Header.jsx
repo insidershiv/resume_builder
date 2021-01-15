@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { AppBar, IconButton,  Menu, MenuItem, Tab, Tabs, Toolbar, Typography, useTheme } from '@material-ui/core';
+import { AppBar, IconButton,  Menu, MenuItem, Tab, Tabs, Toolbar, Typography, useMediaQuery, useTheme } from '@material-ui/core';
 import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/styles'
 
@@ -16,13 +16,24 @@ function Header(props) {
         },
 
         appbarBackground:{
-            backgroundColor:'transparent'
+            backgroundColor:'transparent',
+            [theme.breakpoints.down('xs')]:{
+                justify:"center",
+                align:"center",
+                alignItems:'center'
+            }
         },
         tab:{
             color:'purple',
             fontFamily:'Lato',
             fontWeight:700,
-            textTransform:'none'
+            textTransform:'none',
+            // [theme.breakpoints.down('xs')]:{
+            //     marginTop:'1em',
+            //     fontSize:'1.5rem',
+            //     fontWeight:400
+            // }
+
 
 
         }
@@ -35,6 +46,7 @@ function Header(props) {
 
     const classes = useStyles();
     const theme = useTheme();
+    const matches = useMediaQuery(theme.breakpoints.down("xs"));
     const [value, setValue] = useState(0);
     var isFresh = true;
     const handleChange = (event, value)=>{
@@ -56,14 +68,14 @@ function Header(props) {
     }, [value])
     return (
        <>
-        <AppBar className={classes.appbarBackground} position="fixed" elevation={0}>
+        <AppBar className={classes.appbarBackground} position="fixed" elevation={0} >
             <Toolbar disableGutters>
                
          <Tabs className={classes.tabContainer} value ={value} onChange={handleChange} >
              <Tab label="Home" component={Link} to="/" className={classes.tab} disableRipple />
              <Tab label="Templates" component={Link} to="/templates" className={classes.tab} disableRipple />
              <Tab label="About" component={Link} to="/about" className={classes.tab} disableRipple />
-             <Tab label="Suggestion" component={Link} to="/suggestion" className={classes.tab} disableRipple />
+             <Tab label="Suggestion" component={Link} to="/suggestion" className={classes.tab} disableRipple style={{marginRight:matches ? '3em':undefined}} />
          </Tabs>
 
             </Toolbar>
