@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { AppBar, IconButton,  Menu, MenuItem, Tab, Tabs, Toolbar, Typography, useMediaQuery, useTheme } from '@material-ui/core';
+import { AppBar, IconButton,  Menu, MenuItem, MuiThemeProvider, responsiveFontSizes, Tab, Tabs, Toolbar, Typography, useMediaQuery, useTheme } from '@material-ui/core';
 import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/styles'
 
@@ -45,12 +45,13 @@ function Header(props) {
 
 
     const classes = useStyles();
-    const theme = useTheme();
+    let theme = useTheme();
+    theme = responsiveFontSizes(theme);
     const matches = useMediaQuery(theme.breakpoints.down("xs"));
     const [value, setValue] = useState(0);
-    var isFresh = true;
+  
     const handleChange = (event, value)=>{
-        isFresh = false;
+       
         setValue(value);
     }
 
@@ -68,6 +69,9 @@ function Header(props) {
     }, [value])
     return (
        <>
+       <MuiThemeProvider theme={theme}>
+
+      
         <AppBar className={classes.appbarBackground} position="fixed" elevation={0} >
             <Toolbar disableGutters>
                
@@ -81,6 +85,7 @@ function Header(props) {
             </Toolbar>
         </AppBar>
         <div className={classes.toolbarMargin}></div>
+        </MuiThemeProvider>
         </>
 
       

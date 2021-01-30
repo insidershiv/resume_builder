@@ -5,11 +5,12 @@ import theme from './ui/Theme';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Templates from './ui/Templates';
 import ResumeForm from './ui/ResumeForm';
+import { MuiThemeProvider } from '@material-ui/core';
 
 function App() {
   return (
 
-    <ThemeProvider theme={theme}>
+    <MuiThemeProvider theme={theme}>
 
       <BrowserRouter>
 
@@ -25,7 +26,7 @@ function App() {
       
         
 
-    </ThemeProvider>
+    </MuiThemeProvider>
     
  
   );
